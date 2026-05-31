@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Umair Quais — Portfolio coming soon</title>
-<meta name="description" content="Senior Product Manager. Building marketplaces, payments, and AI-powered tools. Portfolio launching soon." />
-<meta property="og:title" content="Umair Quais — Portfolio coming soon" />
-<meta property="og:description" content="Senior PM. E-commerce, marketplaces, and AI-powered tools. Launching soon." />
+<title>Umair Quais — Product Manager</title>
+<meta name="description" content="Senior Product Manager. Building marketplaces, payments, and AI-powered tools." />
+<meta property="og:title" content="Umair Quais — Product Manager" />
+<meta property="og:description" content="Senior PM. E-commerce, marketplaces, and AI-powered tools." />
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -29,8 +29,11 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body {
-    height: 100%;
     background: var(--bg);
     color: var(--ink);
     font-family: "DM Sans", system-ui, sans-serif;
@@ -51,14 +54,102 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
-  .page {
-    min-height: 100dvh;
-    display: grid;
-    grid-template-rows: auto 1fr auto auto;
-    padding: 28px clamp(20px, 4vw, 56px);
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(239, 231, 215, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 clamp(20px, 4vw, 56px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  .nav-logo {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 350;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  @media (max-width: 640px) {
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 10px; letter-spacing: .06em; }
+  }
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
   }
 
-  /* Top bar */
+  /* SECTION WRAPPER */
+  .section {
+    padding: clamp(64px, 10vw, 112px) clamp(20px, 4vw, 56px);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    z-index: 1;
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .section-label::before {
+    content: "";
+    width: 28px; height: 1px;
+    background: var(--ink-soft);
+  }
+
+  .section-title {
+    font-family: "Fraunces", serif;
+    font-variation-settings: "SOFT" 100, "opsz" 72;
+    font-weight: 360;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: .92;
+    letter-spacing: -.03em;
+    color: var(--ink);
+    margin-bottom: clamp(40px, 6vw, 64px);
+  }
+  .section-title .italic {
+    font-style: italic;
+    font-weight: 320;
+    color: var(--accent);
+  }
+
+  /* ---- HERO ---- */
+  #hero {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 28px clamp(20px, 4vw, 56px);
+  }
   .topbar {
     display: flex;
     justify-content: space-between;
@@ -82,9 +173,7 @@
     0%, 100% { opacity: 1; transform: scale(1); }
     50%      { opacity: .35; transform: scale(.85); }
   }
-
-  /* Hero */
-  main {
+  .hero-body {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: clamp(24px, 5vw, 80px);
@@ -92,10 +181,9 @@
     padding: clamp(40px, 8vw, 80px) 0 clamp(32px, 5vw, 56px);
   }
   @media (max-width: 820px) {
-    main { grid-template-columns: 1fr; align-items: start; gap: 48px; }
+    .hero-body { grid-template-columns: 1fr; align-items: start; gap: 48px; }
   }
-
-  .label {
+  .hero-label {
     font-family: "JetBrains Mono", monospace;
     font-size: 12px;
     letter-spacing: .12em;
@@ -106,14 +194,14 @@
     gap: 10px;
     margin-bottom: 28px;
     opacity: 0;
+    transform: translateY(8px);
     animation: rise .8s .1s ease forwards;
   }
-  .label::before {
+  .hero-label::before {
     content: "";
     width: 28px; height: 1px;
     background: var(--ink-soft);
   }
-
   h1 {
     font-family: "Fraunces", serif;
     font-variation-settings: "SOFT" 100, "opsz" 144;
@@ -128,10 +216,7 @@
     font-weight: 320;
     color: var(--accent);
   }
-  h1 .line {
-    display: block;
-    overflow: hidden;
-  }
+  h1 .line { display: block; overflow: hidden; }
   h1 .line > span {
     display: inline-block;
     transform: translateY(110%);
@@ -139,13 +224,7 @@
   }
   h1 .line:nth-child(1) > span { animation-delay: .15s; }
   h1 .line:nth-child(2) > span { animation-delay: .28s; }
-
-  @keyframes rise {
-    to { transform: translateY(0); opacity: 1; }
-  }
-  .label { transform: translateY(8px); }
-  .label { animation-fill-mode: forwards; }
-
+  @keyframes rise { to { transform: translateY(0); opacity: 1; } }
   .tagline {
     font-family: "Fraunces", serif;
     font-variation-settings: "SOFT" 100;
@@ -160,15 +239,13 @@
     animation: fade 1s .9s ease forwards;
   }
   @keyframes fade { to { opacity: 1; } }
-
-  /* Side card */
-  .side {
+  .hero-side {
     border-top: 1px solid var(--line);
     padding-top: 24px;
     opacity: 0;
     animation: fade 1s 1s ease forwards;
   }
-  .side h2 {
+  .hero-side h2 {
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     letter-spacing: .14em;
@@ -198,43 +275,106 @@
     color: var(--accent-2);
     font-size: 15.5px;
   }
-
-  /* Certifications strip */
-  .certs-section {
+  .hero-nav-hint {
     border-top: 1px solid var(--line);
-    padding: 28px 0 32px;
+    padding-top: 22px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
     opacity: 0;
-    animation: fade 1s 1.1s ease forwards;
+    animation: fade 1s 1.2s ease forwards;
   }
-  .certs-header {
+  .hero-nav-hint a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+  }
+  .hero-nav-hint a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ---- ABOUT ---- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+  @media (max-width: 740px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-body p {
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    max-width: 52ch;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body p strong { color: var(--ink); font-weight: 500; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .stat-box {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    padding: 24px 20px;
+  }
+  .stat-number {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 350;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -.02em;
+  }
+  .stat-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* ---- CERTIFICATIONS & EDUCATION ---- */
+  .certs-edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: start;
+  }
+  @media (max-width: 740px) { .certs-edu-grid { grid-template-columns: 1fr; } }
+  .col-label {
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     letter-spacing: .14em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    margin-bottom: 20px;
-  }
-  .certs-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
   }
   .cert-pill {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     gap: 4px;
     border: 1px solid var(--line);
-    padding: 12px 18px;
+    padding: 16px 20px;
     background: var(--bg-2);
+    margin-bottom: 10px;
     transition: border-color .2s, background .2s;
   }
-  .cert-pill:hover {
-    border-color: var(--ink-soft);
-    background: var(--bg);
-  }
+  .cert-pill:hover { border-color: var(--ink-soft); background: var(--bg); }
   .cert-name {
     font-family: "DM Sans", sans-serif;
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--ink);
     letter-spacing: -.01em;
@@ -246,56 +386,350 @@
     text-transform: uppercase;
     color: var(--ink-soft);
   }
-  .cert-issuer {
-    color: var(--accent-2);
+  .cert-issuer { color: var(--accent-2); }
+
+  .edu-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .edu-item:first-child { padding-top: 0; }
+  .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .edu-degree {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 350;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .edu-school {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .edu-year {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
   }
 
-  /* Bottom strip */
-  footer {
+  /* ---- PROJECTS ---- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+  }
+  .project-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color .2s, background .2s;
+    text-decoration: none;
+  }
+  .project-card:hover { border-color: var(--ink-soft); background: var(--bg); }
+  .project-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    background: rgba(43, 58, 85, .08);
+    padding: 4px 10px;
+    display: inline-block;
+    align-self: flex-start;
+  }
+  .project-name {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 350;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+  }
+  .project-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+  .project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
     border-top: 1px solid var(--line);
-    padding-top: 22px;
+  }
+  .project-tech {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .project-link {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+
+  /* ---- RESUME ---- */
+  .resume-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+  @media (max-width: 740px) { .resume-layout { grid-template-columns: 1fr; } }
+  .resume-exp-item {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .resume-exp-item:first-child { padding-top: 0; }
+  .resume-exp-item:last-child { border-bottom: none; }
+  .exp-header {
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .exp-role {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 350;
+    color: var(--ink);
+    letter-spacing: -.01em;
+  }
+  .exp-period {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+  .exp-company {
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent-2);
+    margin-bottom: 12px;
+    letter-spacing: .01em;
+  }
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .exp-bullets li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    padding-left: 18px;
+    position: relative;
+  }
+  .exp-bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .resume-sidebar-block {
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    margin-bottom: 36px;
+  }
+  .resume-sidebar-block:first-child { border-top: none; padding-top: 0; }
+  .sidebar-block-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .skill-tag {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 5px 10px;
+    margin: 0 4px 6px 0;
+    background: var(--bg-2);
+  }
+  .resume-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--ink);
+    padding: 14px 24px;
+    text-decoration: none;
+    margin-top: 8px;
+    transition: background .2s;
+  }
+  .resume-cta:hover { background: var(--accent); }
+
+  /* ---- CONTACT ---- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+  @media (max-width: 740px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-intro {
+    font-family: "Fraunces", serif;
+    font-variation-settings: "SOFT" 100;
+    font-style: italic;
+    font-weight: 350;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 42ch;
+    margin-bottom: 36px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .contact-link-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    transition: border-color .2s, background .2s;
+    gap: 16px;
+  }
+  .contact-link-item:hover { border-color: var(--ink-soft); background: var(--bg); }
+  .contact-link-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .contact-link-value {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .contact-form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-field label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .form-field input,
+  .form-field textarea {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color .2s;
+    resize: none;
+    width: 100%;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus { border-color: var(--ink-soft); }
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--ink);
+    border: none;
+    padding: 14px 28px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background .2s;
+  }
+  .form-submit:hover { background: var(--accent); }
+
+  /* ---- FOOTER ---- */
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding: 28px clamp(20px, 4vw, 56px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 24px;
     flex-wrap: wrap;
     font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
-    letter-spacing: .04em;
+    font-size: 11px;
+    letter-spacing: .06em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    opacity: 0;
-    animation: fade 1s 1.2s ease forwards;
+    position: relative;
+    z-index: 1;
   }
-  footer a {
+  .site-footer a {
     color: var(--ink);
     text-decoration: none;
     border-bottom: 1px solid var(--ink);
     padding-bottom: 2px;
     transition: color .2s, border-color .2s;
   }
-  footer a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-  footer .links {
-    display: flex;
-    gap: 22px;
-    flex-wrap: wrap;
-  }
-  footer .contact {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-size: 18px;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
-  }
-  footer .contact a {
-    border-bottom-style: dashed;
-  }
+  .site-footer a:hover { color: var(--accent); border-color: var(--accent); }
+  .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
 
-  /* Big quiet number watermark */
+  /* Watermark */
   .watermark {
     position: fixed;
     bottom: -10px;
@@ -310,92 +744,368 @@
     user-select: none;
     font-variation-settings: "SOFT" 100;
   }
-  main, .certs-section, footer, .topbar { position: relative; z-index: 1; }
 </style>
 </head>
 <body>
-  <div class="watermark" aria-hidden="true">26</div>
 
-  <div class="page">
+  <div class="watermark" aria-hidden="true">UQ</div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Umair <span>Quais.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#certs">Certs</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
     <div class="topbar">
-      <span><span class="dot"></span>In development</span>
+      <span><span class="dot"></span>Open to work</span>
       <span id="clock">— : —</span>
     </div>
 
-    <main>
+    <div class="hero-body">
       <div>
-        <div class="label">Portfolio · v1 launching soon</div>
+        <div class="hero-label">Senior Product Manager</div>
         <h1>
           <span class="line"><span>Umair</span></span>
           <span class="line"><span><span class="italic">Quais.</span></span></span>
         </h1>
         <p class="tagline">
-          Senior product manager. A decade spent shipping marketplaces,
-          payments, and the occasional AI side project. The full portfolio
-          is being assembled, one case study at a time.
+          A decade spent shipping marketplaces, payments, and the occasional AI side project.
         </p>
       </div>
 
-      <aside class="side">
+      <aside class="hero-side">
         <h2>Currently</h2>
         <dl class="meta">
           <dt>Role</dt>
           <dd>Sr. PM, marketplace platform <em>at scale</em></dd>
-
           <dt>Building</dt>
           <dd>WorkTracker, MenuLens, an AI literacy series</dd>
-
           <dt>Reading</dt>
           <dd><em>Anything on AI product craft</em></dd>
         </dl>
       </aside>
-    </main>
+    </div>
 
-    <section class="certs-section" aria-label="Certifications">
-      <p class="certs-header">Certifications</p>
-      <div class="certs-grid">
+    <div class="hero-nav-hint">
+      <a href="#about">About me</a>
+      <a href="#certs">Certifications</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Say hello</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-label">About me</div>
+    <h2 class="section-title">A PM who <span class="italic">ships.</span></h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          I'm a <strong>Senior Product Manager</strong> with 10+ years of experience across e-commerce, marketplace, SaaS, and retail-tech. I build scalable platform products with a focus on payments, OMS, and marketplace infrastructure.
+        </p>
+        <p>
+          My work spans the full stack of product — from defining OMS architecture and payment flows to running HoReCa pilots with 10,000+ orders and driving $43K in cost savings through operational improvements.
+        </p>
+        <p>
+          Outside of the day job, I build AI-powered tools like <strong>WorkTracker</strong> and <strong>MenuLens</strong>, write an AI literacy series for non-technical audiences, and run a digital creative studio.
+        </p>
+        <p>
+          I'm actively exploring <strong>new Senior PM opportunities</strong> at consumer-scale platforms where I can drive measurable product impact.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years of product experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">$43K</div>
+          <div class="stat-label">Operational cost savings</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">10K+</div>
+          <div class="stat-label">Orders in HoReCa pilot</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">3</div>
+          <div class="stat-label">AI tools shipped as side projects</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS & EDUCATION -->
+  <section id="certs" class="section">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certs &amp; <span class="italic">Education.</span></h2>
+    <div class="certs-edu-grid">
+      <div>
+        <div class="col-label">Certifications</div>
         <div class="cert-pill">
           <span class="cert-name">Certified Scrum Product Owner</span>
-          <span class="cert-meta"><span class="cert-issuer">Scrum Alliance</span> &middot; CSPO</span>
+          <span class="cert-meta"><span class="cert-issuer">Scrum Alliance</span> · CSPO</span>
         </div>
         <div class="cert-pill">
           <span class="cert-name">Claude Code 101</span>
-          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> &middot; May 2026</span>
+          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> · May 2026</span>
         </div>
         <div class="cert-pill">
           <span class="cert-name">Introduction to Agent Skills</span>
-          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> &middot; May 2026</span>
+          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> · May 2026</span>
         </div>
         <div class="cert-pill">
           <span class="cert-name">Introduction to Model Context Protocol</span>
-          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> &middot; May 2026</span>
+          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> · May 2026</span>
         </div>
       </div>
-    </section>
+      <div>
+        <div class="col-label">Education</div>
+        <div class="edu-item">
+          <div class="edu-degree">B.Tech, Information Technology</div>
+          <div class="edu-school">Rajasthan Technical University</div>
+          <div class="edu-year">2010 — 2014</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://medium.com/" target="_blank" rel="noopener">Medium</a>
-        <a href="https://github.com/uquais" target="_blank" rel="noopener">GitHub</a>
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="section-label">Side projects</div>
+    <h2 class="section-title">Things I've <span class="italic">built.</span></h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-tag">AI · Productivity</span>
+        <div class="project-name">WorkTracker</div>
+        <p class="project-desc">
+          A Jira and Slack dashboard with Claude API-powered daily briefings. Surfaces blockers, PRs, and sprint health in one view. Deployed and in daily use.
+        </p>
+        <div class="project-footer">
+          <span class="project-tech">React · Claude API · Vercel</span>
+          <a href="https://worktracker-ten.vercel.app" target="_blank" rel="noopener" class="project-link">Live ↗</a>
+        </div>
       </div>
-      <div class="contact">
-        Say hello, <a href="mailto:uquais@gmail.com">uquais@gmail.com</a>
+      <div class="project-card">
+        <span class="project-tag">AI · Food-tech</span>
+        <div class="project-name">MenuLens</div>
+        <p class="project-desc">
+          AI-powered restaurant menu analyzer. Chrome Extension + React web app using Claude vision API for OCR and dish enrichment, with Unsplash reference images.
+        </p>
+        <div class="project-footer">
+          <span class="project-tech">Claude Vision · React · Chrome Extension</span>
+          <a href="https://github.com/uquais" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+        </div>
       </div>
-    </footer>
-  </div>
+      <div class="project-card">
+        <span class="project-tag">Content · AI Literacy</span>
+        <div class="project-name">AI Literacy Series</div>
+        <p class="project-desc">
+          A LinkedIn and Medium content series teaching non-technical audiences how to use AI tools effectively. Philosophy: "Teach them how to drive, not how the engine was built."
+        </p>
+        <div class="project-footer">
+          <span class="project-tech">LinkedIn · Medium</span>
+          <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener" class="project-link">Read ↗</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Creative · Digital</span>
+        <div class="project-name">House of Veils</div>
+        <p class="project-desc">
+          A modest fashion brand with a digital presence. Alongside it, a digital wedding invitations studio under Umair Group of Companies, serving clients across South Asia and the Middle East.
+        </p>
+        <div class="project-footer">
+          <span class="project-tech">Brand · E-commerce · Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="section">
+    <div class="section-label">Work history</div>
+    <h2 class="section-title">10 years of <span class="italic">shipping.</span></h2>
+    <div class="resume-layout">
+      <div>
+        <div class="resume-exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Senior Product Manager</div>
+            <div class="exp-period">May 2025 — Present</div>
+          </div>
+          <div class="exp-company">Fynd · Jio Commerce Platform</div>
+          <ul class="exp-bullets">
+            <li>Led Metro/RCPL onboarding across OMS, Payments, and Extensions.</li>
+            <li>Drove HoReCa pilot to 10,000+ orders; saved $43K through operational improvements.</li>
+            <li>Architected GST refund hold flow across OMS and Extension layers.</li>
+            <li>Managing platform migration from v1.9.4 to v1.10.5.</li>
+          </ul>
+        </div>
+        <div class="resume-exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Product Manager</div>
+            <div class="exp-period">Mar 2024 — Apr 2025</div>
+          </div>
+          <div class="exp-company">Intellect Design Arena</div>
+          <ul class="exp-bullets">
+            <li>Worked on core banking and fintech product modules.</li>
+            <li>Coordinated across engineering and client delivery teams.</li>
+          </ul>
+        </div>
+        <div class="resume-exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Product Manager</div>
+            <div class="exp-period">Oct 2022 — Jan 2024</div>
+          </div>
+          <div class="exp-company">Wasoko</div>
+          <ul class="exp-bullets">
+            <li>Built B2B marketplace features for informal retail in Africa.</li>
+            <li>Owned order and inventory management product surfaces.</li>
+          </ul>
+        </div>
+        <div class="resume-exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Product Manager</div>
+            <div class="exp-period">Sep 2021 — Oct 2022</div>
+          </div>
+          <div class="exp-company">Maximl Labs</div>
+          <ul class="exp-bullets">
+            <li>Led frontline worker productivity SaaS for industrial clients.</li>
+          </ul>
+        </div>
+        <div class="resume-exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Senior Product Manager</div>
+            <div class="exp-period">Dec 2018 — Sep 2021</div>
+          </div>
+          <div class="exp-company">Paytm</div>
+          <ul class="exp-bullets">
+            <li>Managed payments and checkout product at scale.</li>
+            <li>Shipped features used by millions of consumers and merchants.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="resume-sidebar-block">
+          <div class="sidebar-block-label">Tools &amp; Platforms</div>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Confluence</span>
+          <span class="skill-tag">Mixpanel</span>
+          <span class="skill-tag">Salesforce</span>
+          <span class="skill-tag">Google Analytics</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Claude API</span>
+        </div>
+        <div class="resume-sidebar-block">
+          <div class="sidebar-block-label">Domains</div>
+          <span class="skill-tag">E-commerce</span>
+          <span class="skill-tag">Marketplace</span>
+          <span class="skill-tag">Payments</span>
+          <span class="skill-tag">OMS</span>
+          <span class="skill-tag">B2B SaaS</span>
+          <span class="skill-tag">AI Products</span>
+          <span class="skill-tag">Retail-tech</span>
+        </div>
+        <div class="resume-sidebar-block">
+          <div class="sidebar-block-label">Download CV</div>
+          <a href="mailto:uquais@gmail.com?subject=Resume Request" class="resume-cta">Request Resume →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Let's <span class="italic">talk.</span></h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">
+          Open to new product challenges. Happy to chat about AI products, marketplaces, or anything you're building.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:uquais@gmail.com" class="contact-link-item">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">uquais@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">linkedin.com/in/uquais</span>
+          </a>
+          <a href="https://github.com/uquais" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">github.com/uquais</span>
+          </a>
+          <a href="https://medium.com/" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-label">Medium</span>
+            <span class="contact-link-value">AI literacy series</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-block">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="c-name">Name</label>
+            <input type="text" id="c-name" placeholder="Your name" />
+          </div>
+          <div class="form-field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" placeholder="your@email.com" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="c-subject">Subject</label>
+          <input type="text" id="c-subject" placeholder="What's this about?" />
+        </div>
+        <div class="form-field">
+          <label for="c-msg">Message</label>
+          <textarea id="c-msg" rows="5" placeholder="Tell me what you're working on..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleContact()">Send message →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span>© 2026 Umair Quais</span>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/uquais" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://medium.com/" target="_blank" rel="noopener">Medium</a>
+      <a href="mailto:uquais@gmail.com">Email</a>
+    </div>
+  </footer>
 
 <script>
-  // Live clock in IST
   const clock = document.getElementById("clock");
   function tick() {
     const now = new Date();
     const opts = { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false };
     const t = now.toLocaleTimeString("en-GB", opts);
-    clock.textContent = `Mumbai · ${t} IST`;
+    clock.textContent = `${t} IST`;
   }
   tick();
   setInterval(tick, 30000);
+
+  function handleContact() {
+    const name = document.getElementById("c-name").value.trim();
+    const email = document.getElementById("c-email").value.trim();
+    const subject = document.getElementById("c-subject").value.trim();
+    const msg = document.getElementById("c-msg").value.trim();
+    if (!name || !email || !msg) { alert("Please fill in name, email, and message."); return; }
+    const mailto = `mailto:uquais@gmail.com?subject=${encodeURIComponent(subject || "Portfolio inquiry")}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${msg}`)}`;
+    window.location.href = mailto;
+  }
 </script>
 </body>
 </html>
