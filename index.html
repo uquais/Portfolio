@@ -581,6 +581,7 @@ nav {
   align-items: start;
 }
 @media (max-width: 640px) { .certs-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .resume-req-grid { grid-template-columns: 1fr; } }
 .cert-col-label {
   font-family: var(--mono);
   font-size: 10.5px;
@@ -675,6 +676,7 @@ footer a:hover { color: var(--accent); }
     <li><a href="#work">Work</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#certs">Creds</a></li>
+    <li><a href="#resume">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
     <li>
       <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme" style="background:none;border:1px solid var(--line2);border-radius:20px;padding:4px 10px;cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink3);display:flex;align-items:center;gap:5px;transition:all .2s;">
@@ -835,6 +837,14 @@ footer a:hover { color: var(--accent); }
         <span class="proj-link">Live ↗</span>
       </div>
     </a>
+    <div class="proj-card" style="cursor:default;">
+      <span class="proj-tag">Agentic AI · Internal · 2026</span>
+      <div class="proj-name">GoFynd Platform AI</div>
+      <p class="proj-desc">Agentic AI workflow layer at Fynd spanning 45+ microservices. Identified the use case, designed, deployed, and tested a reusable skill enabling intelligent automation across platform operations.</p>
+      <div class="proj-footer">
+        <span class="proj-tech">Agentic Workflows · MCP · Claude API</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -868,6 +878,47 @@ footer a:hover { color: var(--accent); }
         <div class="edu-degree">B.Tech, Information Technology</div>
         <div class="edu-school">Suresh Gyan Vihar University</div>
         <div class="edu-year">2010 — 2014</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUEST RESUME -->
+<section id="resume" class="section">
+  <div class="section-eyebrow">Resume</div>
+  <h2 class="section-h">Want my <span class="acc">resume?</span></h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;">
+    <div>
+      <p style="font-size:15px;line-height:1.75;color:var(--ink2);max-width:48ch;margin-bottom:28px;">
+        I'll send my latest resume within 24 hours. Just hit the button — it opens your email with everything pre-filled. One click and you're done.
+      </p>
+      <button
+        id="resumeBtn"
+        onclick="requestResume()"
+        style="display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border:none;border-radius:4px;cursor:pointer;transition:opacity .2s;"
+        onmouseover="this.style.opacity='.85'"
+        onmouseout="this.style.opacity='1'"
+      >
+        <span id="resumeBtnLabel">Request Resume</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);">
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);">Format</span>
+        <span style="font-size:14px;font-weight:500;color:var(--ink);">PDF · Single page</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);">
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);">Last updated</span>
+        <span style="font-size:14px;font-weight:500;color:var(--ink);">June 2026</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);">
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);">Response time</span>
+        <span style="font-size:14px;font-weight:500;color:var(--ink);">Within 24 hours</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);">
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);">Notice period</span>
+        <span style="font-size:14px;font-weight:500;color:var(--ink);">30 days</span>
       </div>
     </div>
   </div>
@@ -1093,6 +1144,101 @@ function scrollBottom() {
 
 function escHtml(s) {
   return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}async function requestResume() {
+  const btn = document.getElementById('resumeBtn');
+  const label = document.getElementById('resumeBtnLabel');
+  btn.disabled = true;
+  label.textContent = 'Gathering info...';
+
+  const now = new Date();
+  const localTime = now.toLocaleString('en-IN', { dateStyle: 'full', timeStyle: 'long' });
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const lang = navigator.language || 'unknown';
+  const screen = `${window.screen.width}x${window.screen.height}`;
+  const viewport = `${window.innerWidth}x${window.innerHeight}`;
+  const ua = navigator.userAgent;
+  const platform = navigator.platform || 'unknown';
+  const referrer = document.referrer || 'Direct / unknown';
+  const online = navigator.onLine ? 'Yes' : 'No';
+  const cookiesEnabled = navigator.cookieEnabled ? 'Yes' : 'No';
+  const touchSupport = ('ontouchstart' in window) ? 'Yes (mobile/tablet)' : 'No (desktop)';
+  const deviceMemory = navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'unknown';
+  const cores = navigator.hardwareConcurrency || 'unknown';
+  const connection = navigator.connection ? `${navigator.connection.effectiveType || ''} ${navigator.connection.downlink ? navigator.connection.downlink+'Mbps' : ''}`.trim() : 'unknown';
+
+  let ip = 'unavailable', city = 'unknown', region = 'unknown', country = 'unknown', isp = 'unknown', lat = '', lon = '', org = '';
+  try {
+    const geo = await fetch('https://ipapi.co/json/');
+    const g = await geo.json();
+    ip      = g.ip        || ip;
+    city    = g.city      || city;
+    region  = g.region    || region;
+    country = g.country_name || country;
+    isp     = g.org       || isp;
+    lat     = g.latitude  || '';
+    lon     = g.longitude || '';
+    org     = g.org       || '';
+  } catch(e) {}
+
+  const mapLink = lat && lon ? `https://maps.google.com/?q=${lat},${lon}` : 'unavailable';
+
+  const subject = `[Resume Request] ${city}, ${country} — ${now.toLocaleDateString('en-IN')}`;
+
+  const body = `
+Hi Umair,
+
+Someone just requested your resume from uquais.online. Here's everything collected:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LOCATION & NETWORK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IP Address   : ${ip}
+City         : ${city}
+Region       : ${region}
+Country      : ${country}
+ISP / Org    : ${org}
+Map link     : ${mapLink}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIME & LOCALE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Timestamp    : ${localTime}
+Timezone     : ${tz}
+Language     : ${lang}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DEVICE & BROWSER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Platform     : ${platform}
+Screen       : ${screen}
+Viewport     : ${viewport}
+Touch device : ${touchSupport}
+RAM          : ${deviceMemory}
+CPU cores    : ${cores}
+Connection   : ${connection}
+Cookies      : ${cookiesEnabled}
+Online       : ${online}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SOURCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Referrer     : ${referrer}
+User Agent   : ${ua}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Reply to this email to send your resume.
+
+— uquais.online
+`.trim();
+
+  const mailto = `mailto:uquais@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+
+  setTimeout(() => {
+    btn.disabled = false;
+    label.textContent = 'Request Resume';
+  }, 3000);
 }
 </script>
 </body>
