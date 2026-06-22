@@ -3,1109 +3,1097 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Umair Quais — Product Manager</title>
-<meta name="description" content="Senior Product Manager. Building marketplaces, payments, and AI-powered tools." />
-<meta property="og:title" content="Umair Quais — Product Manager" />
-<meta property="og:description" content="Senior PM. E-commerce, marketplaces, and AI-powered tools." />
+<title>Umair Quais — Senior PM</title>
+<meta name="description" content="Senior Product Manager. Marketplaces, payments, AI tools. Ask me anything." />
+<meta property="og:title" content="Umair Quais — Senior PM" />
+<meta property="og:description" content="A PM who ships. Ask me anything about my work." />
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0f0f0f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:        #EFE7D7;
-    --bg-2:      #E8DFCB;
-    --ink:       #1A1814;
-    --ink-soft:  #4A463E;
-    --line:      #C9BFA8;
-    --accent:    #B5462A;
-    --accent-2:  #2B3A55;
-  }
+:root {
+  --bg:       #FFFFFF;
+  --bg2:      #F7F7F7;
+  --bg3:      #F0F0F0;
+  --bg4:      #E8E8E8;
+  --line:     #E2E2E2;
+  --line2:    #CCCCCC;
+  --ink:      #0A0A0A;
+  --ink2:     #444444;
+  --ink3:     #888888;
+  --accent:   #A8501E;
+  --accent2:  #1A4FAD;
+  --green:    #1A7A40;
+  --nav-bg:       rgba(255,255,255,0.92);
+  --nav-ink:      #0A0A0A;
+  --nav-ink-soft: #666666;
+  --mono:     "JetBrains Mono", monospace;
+  --serif:    "Fraunces", serif;
+  --sans:     "DM Sans", system-ui, sans-serif;
+}
+[data-theme="dark"] {
+  --bg:       #0D0D0B;
+  --bg2:      #161613;
+  --bg3:      #1E1D19;
+  --bg4:      #252420;
+  --line:     #2A2925;
+  --line2:    #3A3830;
+  --ink:      #E8E3D8;
+  --ink2:     #A89F90;
+  --ink3:     #6A6258;
+  --accent:   #C9703E;
+  --accent2:  #4A7DB5;
+  --green:    #5CBA7D;
+  --nav-bg:       rgba(13,13,11,0.88);
+  --nav-ink:      #E8E3D8;
+  --nav-ink-soft: #6A6258;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ---- NAV ---- */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 48px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(16px,4vw,48px);
+}
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--nav-ink);
+  text-decoration: none;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.nav-logo .acc { color: var(--accent); }
+.nav-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--nav-ink-soft);
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--nav-ink-soft);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--nav-ink); }
+@media (max-width: 560px) { .nav-links { display: none; } }
 
-  html {
-    scroll-behavior: smooth;
-  }
+/* ---- HERO / CHAT ---- */
+#hero {
+  height: 100dvh;
+  padding-top: 48px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.chat-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(20px,4vw,40px) clamp(16px,4vw,32px) 0;
+  min-height: 0;
+}
+.chat-intro {
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 8px;
+}
+.chat-intro-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 14px;
+}
+.chat-intro-headline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 350;
+  font-size: clamp(32px,5vw,54px);
+  line-height: .95;
+  letter-spacing: -.03em;
+  color: var(--ink);
+}
+.chat-intro-headline .acc { color: var(--accent); }
+.chat-intro-sub {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink2);
+  max-width: 52ch;
+}
+/* messages */
+.chat-messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0 8px;
+  overflow-y: auto;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line2) transparent;
+}
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-track { background: transparent; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 2px; }
+.msg {
+  display: flex;
+  gap: 10px;
+  animation: msgIn .25s ease;
+}
+@keyframes msgIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+.msg.user { flex-direction: row-reverse; }
+.msg-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.msg-avatar.bot { background: var(--accent); color: #fff; }
+.msg-avatar.usr { background: var(--bg4); color: var(--ink2); border: 1px solid var(--line2); }
+.msg-bubble {
+  max-width: 88%;
+  padding: 11px 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.msg.bot .msg-bubble {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 2px 12px 12px 12px;
+  color: var(--ink);
+}
+.msg.user .msg-bubble {
+  background: var(--bg3);
+  border: 1px solid var(--line2);
+  border-radius: 12px 2px 12px 12px;
+  color: var(--ink);
+}
+/* structured cards inside bot messages */
+.resp-card {
+  background: var(--bg3);
+  border: 1px solid var(--line2);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.resp-card + .resp-card { margin-top: 8px; }
+.resp-card-tag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.resp-card-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  font-weight: 350;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -.01em;
+  line-height: 1.2;
+}
+.resp-card-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  color: var(--accent2);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.resp-card-body {
+  color: var(--ink2);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.resp-card-body ul {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+.resp-card-body li {
+  padding-left: 14px;
+  position: relative;
+  color: var(--ink2);
+}
+.resp-card-body li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 5px; height: 1px;
+  background: var(--accent);
+}
+.resp-stat-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.resp-stat {
+  background: var(--bg4);
+  border: 1px solid var(--line2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  flex: 1;
+  min-width: 80px;
+}
+.resp-stat-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 350;
+  color: var(--accent);
+  line-height: 1;
+}
+.resp-stat-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-top: 3px;
+}
+.resp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 10px;
+  border-bottom: 1px solid rgba(201,112,62,.3);
+  padding-bottom: 1px;
+  transition: border-color .2s;
+}
+.resp-link:hover { border-color: var(--accent); }
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+}
+.typing-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ink3);
+  animation: tdot 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: .15s; }
+.typing-dot:nth-child(3) { animation-delay: .3s; }
+@keyframes tdot { 0%,80%,100%{transform:scale(.7);opacity:.5} 40%{transform:scale(1);opacity:1} }
 
-  html, body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "DM Sans", system-ui, sans-serif;
-    font-feature-settings: "ss01", "ss02";
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
+/* chips */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 10px 0 8px;
+  border-top: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .07em;
+  padding: 6px 12px;
+  border: 1px solid var(--line2);
+  border-radius: 40px;
+  color: var(--ink2);
+  cursor: pointer;
+  background: transparent;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Grain overlay */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 999;
-    opacity: .08;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
+/* input row */
+.chat-input-row {
+  display: flex;
+  gap: 8px;
+  padding: 10px 0 clamp(14px,2vh,22px);
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+.chat-input {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--line2);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  resize: none;
+  min-height: 44px;
+  max-height: 140px;
+  line-height: 1.5;
+  transition: border-color .2s;
+}
+.chat-input:focus { border-color: var(--ink3); }
+.chat-input::placeholder { color: var(--ink3); }
+.send-btn {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s, transform .1s;
+}
+.send-btn:hover { background: #b8613a; }
+.send-btn:active { transform: scale(.95); }
+.send-btn svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(239, 231, 215, 0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
-    padding: 0 clamp(20px, 4vw, 56px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 52px;
-  }
-  .nav-logo {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-size: 20px;
-    font-weight: 350;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: -.02em;
-  }
-  .nav-logo span { color: var(--accent); }
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    text-decoration: none;
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
-  @media (max-width: 640px) {
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 10px; letter-spacing: .06em; }
-  }
-  @media (max-width: 480px) {
-    .nav-links { display: none; }
-  }
+/* ---- SCROLL SECTIONS ---- */
+.section {
+  border-top: 1px solid var(--line);
+  padding: clamp(56px,8vw,96px) clamp(16px,4vw,48px);
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+.section-eyebrow {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::before { content:""; width:24px; height:1px; background:var(--ink3); }
+.section-h {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 340;
+  font-size: clamp(34px,5vw,60px);
+  line-height: .92;
+  letter-spacing: -.03em;
+  color: var(--ink);
+  margin-bottom: clamp(36px,5vw,56px);
+}
+.section-h .acc { color: var(--accent); }
 
-  /* SECTION WRAPPER */
-  .section {
-    padding: clamp(64px, 10vw, 112px) clamp(20px, 4vw, 56px);
-    border-bottom: 1px solid var(--line);
-    position: relative;
-    z-index: 1;
-  }
-  .section:last-of-type { border-bottom: none; }
+/* work grid */
+.work-list { display: flex; flex-direction: column; gap: 0; }
+.work-item {
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  gap: 16px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+.work-item:first-child { padding-top: 0; }
+.work-item:last-child { border-bottom: none; padding-bottom: 0; }
+.work-role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 340;
+  font-size: clamp(18px,2vw,22px);
+  color: var(--ink);
+  letter-spacing: -.01em;
+  margin-bottom: 4px;
+}
+.work-co {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 12px;
+}
+.work-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.work-bullets li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink2);
+  padding-left: 16px;
+  position: relative;
+}
+.work-bullets li::before {
+  content:"";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 5px; height: 1px;
+  background: var(--accent);
+}
+.work-period {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  text-align: right;
+  padding-top: 4px;
+}
+@media (max-width: 600px) {
+  .work-item { grid-template-columns: 1fr; }
+  .work-period { text-align: left; }
+}
 
-  .section-label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 40px;
-  }
-  .section-label::before {
-    content: "";
-    width: 28px; height: 1px;
-    background: var(--ink-soft);
-  }
+/* projects */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2px;
+}
+.proj-card {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-decoration: none;
+  transition: border-color .2s, background .2s;
+}
+.proj-card:hover { border-color: var(--line2); background: var(--bg3); }
+.proj-tag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  background: rgba(74,125,181,.08);
+  padding: 3px 9px;
+  align-self: flex-start;
+  border-radius: 2px;
+}
+.proj-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 340;
+  font-size: clamp(20px,2.2vw,26px);
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.proj-desc {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--ink2);
+  flex: 1;
+}
+.proj-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  gap: 8px;
+}
+.proj-tech {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+.proj-link {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,112,62,.35);
+  padding-bottom: 1px;
+}
 
-  .section-title {
-    font-family: "Fraunces", serif;
-    font-variation-settings: "SOFT" 100, "opsz" 72;
-    font-weight: 360;
-    font-size: clamp(40px, 6vw, 80px);
-    line-height: .92;
-    letter-spacing: -.03em;
-    color: var(--ink);
-    margin-bottom: clamp(40px, 6vw, 64px);
-  }
-  .section-title .italic {
-    font-style: italic;
-    font-weight: 320;
-    color: var(--accent);
-  }
+/* certs */
+.certs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px,4vw,56px);
+  align-items: start;
+}
+@media (max-width: 640px) { .certs-grid { grid-template-columns: 1fr; } }
+.cert-col-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.cert-item {
+  padding: 14px 16px;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  margin-bottom: 8px;
+  transition: border-color .2s;
+}
+.cert-item:hover { border-color: var(--line2); }
+.cert-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.cert-meta { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink3); }
+.cert-meta .issuer { color: var(--accent2); }
+.edu-item { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.edu-item:first-child { padding-top: 0; }
+.edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+.edu-degree { font-family: var(--serif); font-style: italic; font-size: 17px; font-weight: 340; color: var(--ink); margin-bottom: 5px; }
+.edu-school { font-size: 13px; color: var(--ink2); margin-bottom: 3px; }
+.edu-year { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); }
 
-  /* ---- HERO ---- */
-  #hero {
-    min-height: 100dvh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: 28px clamp(20px, 4vw, 56px);
-  }
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
-    letter-spacing: .04em;
-    color: var(--ink-soft);
-    text-transform: uppercase;
-  }
-  .topbar .dot {
-    display: inline-block;
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-right: 8px;
-    vertical-align: 1px;
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%      { opacity: .35; transform: scale(.85); }
-  }
-  .hero-body {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: clamp(24px, 5vw, 80px);
-    align-items: end;
-    padding: clamp(40px, 8vw, 80px) 0 clamp(32px, 5vw, 56px);
-  }
-  @media (max-width: 820px) {
-    .hero-body { grid-template-columns: 1fr; align-items: start; gap: 48px; }
-  }
-  .hero-label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 28px;
-    opacity: 0;
-    transform: translateY(8px);
-    animation: rise .8s .1s ease forwards;
-  }
-  .hero-label::before {
-    content: "";
-    width: 28px; height: 1px;
-    background: var(--ink-soft);
-  }
-  h1 {
-    font-family: "Fraunces", serif;
-    font-variation-settings: "SOFT" 100, "opsz" 144;
-    font-weight: 360;
-    font-size: clamp(64px, 11vw, 184px);
-    line-height: .88;
-    letter-spacing: -.035em;
-    color: var(--ink);
-  }
-  h1 .italic {
-    font-style: italic;
-    font-weight: 320;
-    color: var(--accent);
-  }
-  h1 .line { display: block; overflow: hidden; }
-  h1 .line > span {
-    display: inline-block;
-    transform: translateY(110%);
-    animation: rise .9s ease forwards;
-  }
-  h1 .line:nth-child(1) > span { animation-delay: .15s; }
-  h1 .line:nth-child(2) > span { animation-delay: .28s; }
-  @keyframes rise { to { transform: translateY(0); opacity: 1; } }
-  .tagline {
-    font-family: "Fraunces", serif;
-    font-variation-settings: "SOFT" 100;
-    font-style: italic;
-    font-weight: 350;
-    font-size: clamp(18px, 1.8vw, 22px);
-    line-height: 1.45;
-    color: var(--ink-soft);
-    max-width: 38ch;
-    margin-top: 28px;
-    opacity: 0;
-    animation: fade 1s .9s ease forwards;
-  }
-  @keyframes fade { to { opacity: 1; } }
-  .hero-side {
-    border-top: 1px solid var(--line);
-    padding-top: 24px;
-    opacity: 0;
-    animation: fade 1s 1s ease forwards;
-  }
-  .hero-side h2 {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 18px;
-  }
-  .meta {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px 20px;
-    font-size: 14.5px;
-    line-height: 1.6;
-  }
-  .meta dt {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    padding-top: 3px;
-  }
-  .meta dd { color: var(--ink); }
-  .meta dd em {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    color: var(--accent-2);
-    font-size: 15.5px;
-  }
-  .hero-nav-hint {
-    border-top: 1px solid var(--line);
-    padding-top: 22px;
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fade 1s 1.2s ease forwards;
-  }
-  .hero-nav-hint a {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    text-decoration: none;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 2px;
-    transition: color .2s, border-color .2s;
-  }
-  .hero-nav-hint a:hover { color: var(--accent); border-color: var(--accent); }
+/* contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px,4vw,64px);
+  align-items: start;
+}
+@media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-intro {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 340;
+  font-size: clamp(18px,2vw,22px);
+  line-height: 1.5;
+  color: var(--ink2);
+  margin-bottom: 28px;
+}
+.contact-links { display: flex; flex-direction: column; gap: 2px; }
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 18px;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: border-color .2s, background .2s;
+  gap: 12px;
+}
+.contact-item:hover { border-color: var(--line2); background: var(--bg3); }
+.contact-label { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+.contact-val { font-size: 13.5px; font-weight: 500; color: var(--ink); }
 
-  /* ---- ABOUT ---- */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 5vw, 80px);
-    align-items: start;
-  }
-  @media (max-width: 740px) { .about-grid { grid-template-columns: 1fr; } }
-  .about-body p {
-    font-size: clamp(16px, 1.6vw, 18px);
-    line-height: 1.75;
-    color: var(--ink-soft);
-    margin-bottom: 20px;
-    max-width: 52ch;
-  }
-  .about-body p:last-child { margin-bottom: 0; }
-  .about-body p strong { color: var(--ink); font-weight: 500; }
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-  .stat-box {
-    background: var(--bg-2);
-    border: 1px solid var(--line);
-    padding: 24px 20px;
-  }
-  .stat-number {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 350;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 8px;
-    letter-spacing: -.02em;
-  }
-  .stat-label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    line-height: 1.4;
-  }
-
-  /* ---- CERTIFICATIONS & EDUCATION ---- */
-  .certs-edu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 5vw, 64px);
-    align-items: start;
-  }
-  @media (max-width: 740px) { .certs-edu-grid { grid-template-columns: 1fr; } }
-  .col-label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 24px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--line);
-  }
-  .cert-pill {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    border: 1px solid var(--line);
-    padding: 16px 20px;
-    background: var(--bg-2);
-    margin-bottom: 10px;
-    transition: border-color .2s, background .2s;
-  }
-  .cert-pill:hover { border-color: var(--ink-soft); background: var(--bg); }
-  .cert-name {
-    font-family: "DM Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink);
-    letter-spacing: -.01em;
-  }
-  .cert-meta {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .cert-issuer { color: var(--accent-2); }
-
-  .edu-item {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .edu-item:first-child { padding-top: 0; }
-  .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .edu-degree {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-size: 18px;
-    font-weight: 350;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .edu-school {
-    font-family: "DM Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink-soft);
-    margin-bottom: 4px;
-  }
-  .edu-year {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-
-  /* ---- PROJECTS ---- */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2px;
-  }
-  .project-card {
-    background: var(--bg-2);
-    border: 1px solid var(--line);
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    transition: border-color .2s, background .2s;
-    text-decoration: none;
-  }
-  .project-card:hover { border-color: var(--ink-soft); background: var(--bg); }
-  .project-tag {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--accent-2);
-    background: rgba(43, 58, 85, .08);
-    padding: 4px 10px;
-    display: inline-block;
-    align-self: flex-start;
-  }
-  .project-name {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-size: clamp(22px, 2.5vw, 28px);
-    font-weight: 350;
-    color: var(--ink);
-    line-height: 1.1;
-    letter-spacing: -.02em;
-  }
-  .project-desc {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    flex: 1;
-  }
-  .project-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 16px;
-    border-top: 1px solid var(--line);
-  }
-  .project-tech {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .project-link {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 1px;
-  }
-
-  /* ---- RESUME ---- */
-  .resume-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: clamp(32px, 5vw, 80px);
-    align-items: start;
-  }
-  @media (max-width: 740px) { .resume-layout { grid-template-columns: 1fr; } }
-  .resume-exp-item {
-    padding: 28px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .resume-exp-item:first-child { padding-top: 0; }
-  .resume-exp-item:last-child { border-bottom: none; }
-  .exp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-  }
-  .exp-role {
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-size: clamp(18px, 2vw, 22px);
-    font-weight: 350;
-    color: var(--ink);
-    letter-spacing: -.01em;
-  }
-  .exp-period {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    white-space: nowrap;
-    padding-top: 4px;
-  }
-  .exp-company {
-    font-family: "DM Sans", sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent-2);
-    margin-bottom: 12px;
-    letter-spacing: .01em;
-  }
-  .exp-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-  }
-  .exp-bullets li {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    padding-left: 18px;
-    position: relative;
-  }
-  .exp-bullets li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 9px;
-    width: 6px;
-    height: 1px;
-    background: var(--accent);
-  }
-  .resume-sidebar-block {
-    border-top: 1px solid var(--line);
-    padding-top: 24px;
-    margin-bottom: 36px;
-  }
-  .resume-sidebar-block:first-child { border-top: none; padding-top: 0; }
-  .sidebar-block-label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
-  }
-  .skill-tag {
-    display: inline-block;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    border: 1px solid var(--line);
-    padding: 5px 10px;
-    margin: 0 4px 6px 0;
-    background: var(--bg-2);
-  }
-  .resume-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--bg);
-    background: var(--ink);
-    padding: 14px 24px;
-    text-decoration: none;
-    margin-top: 8px;
-    transition: background .2s;
-  }
-  .resume-cta:hover { background: var(--accent); }
-
-  /* ---- CONTACT ---- */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 5vw, 80px);
-    align-items: start;
-  }
-  @media (max-width: 740px) { .contact-grid { grid-template-columns: 1fr; } }
-  .contact-intro {
-    font-family: "Fraunces", serif;
-    font-variation-settings: "SOFT" 100;
-    font-style: italic;
-    font-weight: 350;
-    font-size: clamp(20px, 2.2vw, 26px);
-    line-height: 1.5;
-    color: var(--ink-soft);
-    max-width: 42ch;
-    margin-bottom: 36px;
-  }
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .contact-link-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 20px;
-    background: var(--bg-2);
-    border: 1px solid var(--line);
-    text-decoration: none;
-    transition: border-color .2s, background .2s;
-    gap: 16px;
-  }
-  .contact-link-item:hover { border-color: var(--ink-soft); background: var(--bg); }
-  .contact-link-label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .contact-link-value {
-    font-family: "DM Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink);
-  }
-  .contact-form-block {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .form-field label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .form-field input,
-  .form-field textarea {
-    background: var(--bg-2);
-    border: 1px solid var(--line);
-    color: var(--ink);
-    font-family: "DM Sans", sans-serif;
-    font-size: 14px;
-    padding: 12px 14px;
-    outline: none;
-    transition: border-color .2s;
-    resize: none;
-    width: 100%;
-  }
-  .form-field input:focus,
-  .form-field textarea:focus { border-color: var(--ink-soft); }
-  .form-submit {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--bg);
-    background: var(--ink);
-    border: none;
-    padding: 14px 28px;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: background .2s;
-  }
-  .form-submit:hover { background: var(--accent); }
-
-  /* ---- FOOTER ---- */
-  .site-footer {
-    border-top: 1px solid var(--line);
-    padding: 28px clamp(20px, 4vw, 56px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    position: relative;
-    z-index: 1;
-  }
-  .site-footer a {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 2px;
-    transition: color .2s, border-color .2s;
-  }
-  .site-footer a:hover { color: var(--accent); border-color: var(--accent); }
-  .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
-
-  /* Watermark */
-  .watermark {
-    position: fixed;
-    bottom: -10px;
-    right: clamp(20px, 4vw, 56px);
-    font-family: "Fraunces", serif;
-    font-style: italic;
-    font-size: clamp(160px, 28vw, 460px);
-    color: var(--bg-2);
-    line-height: 1;
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-    font-variation-settings: "SOFT" 100;
-  }
+/* footer */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 22px clamp(16px,4vw,48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+footer a { color: var(--ink2); text-decoration: none; transition: color .2s; }
+footer a:hover { color: var(--accent); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
 
-  <div class="watermark" aria-hidden="true">UQ</div>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">umair<span class="acc">.</span>quais</a>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    <span>open to work</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certs">Creds</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme" style="background:none;border:1px solid var(--line2);border-radius:20px;padding:4px 10px;cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink3);display:flex;align-items:center;gap:5px;transition:all .2s;">
+        <span id="themeIcon">☽</span><span id="themeLabel">dark</span>
+      </button>
+    </li>
+  </ul>
+</nav>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#hero" class="nav-logo">Umair <span>Quais.</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#certs">Certs</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="topbar">
-      <span><span class="dot"></span>Open to work</span>
-      <span id="clock">— : —</span>
+<!-- HERO: CHAT -->
+<section id="hero">
+  <div class="chat-shell">
+    <div class="chat-intro">
+      <div class="chat-intro-eyebrow">Senior Product Manager · Mumbai</div>
+      <h1 class="chat-intro-headline">Ask me anything<br><span class="acc">about Umair.</span></h1>
+      <p class="chat-intro-sub">10 years of shipping marketplaces, payments, and AI tools. Type a question or pick one below.</p>
     </div>
 
-    <div class="hero-body">
+    <div class="chat-messages" id="chatMessages">
+      <!-- initial bot message -->
+      <div class="msg bot">
+        <div class="msg-avatar bot">UQ</div>
+        <div class="msg-bubble">
+          Hey! I'm Umair — Senior PM currently at Fynd. I've spent a decade building marketplace platforms, payment systems, and recently some AI-powered tools on the side.<br><br>
+          What would you like to know? You can ask about my experience, projects, what I'm looking for, or anything else.
+        </div>
+      </div>
+    </div>
+
+    <div class="chip-row" id="chipRow">
+      <button class="chip" onclick="sendChip(this, 'What kind of PM are you?')">What kind of PM are you?</button>
+      <button class="chip" onclick="sendChip(this, 'Show me your recent work')">Show me your recent work</button>
+      <button class="chip" onclick="sendChip(this, 'What AI tools have you built?')">What AI tools have you built?</button>
+      <button class="chip" onclick="sendChip(this, 'What are your skills and tools?')">Skills &amp; tools?</button>
+      <button class="chip" onclick="sendChip(this, 'What are you looking for next?')">What are you looking for next?</button>
+      <button class="chip" onclick="sendChip(this, 'Notice period and availability?')">Notice period &amp; availability?</button>
+      <button class="chip" onclick="sendChip(this, 'How can I contact you?')">How can I contact you?</button>
+    </div>
+
+    <div class="chat-input-row">
+      <textarea
+        class="chat-input"
+        id="chatInput"
+        placeholder="Ask me anything..."
+        rows="1"
+        onkeydown="handleKey(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button class="send-btn" onclick="sendMessage()" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="section">
+  <div class="section-eyebrow">Work history</div>
+  <h2 class="section-h">10 years of <span class="acc">shipping.</span></h2>
+  <div class="work-list">
+    <div class="work-item">
       <div>
-        <div class="hero-label">Senior Product Manager</div>
-        <h1>
-          <span class="line"><span>Umair</span></span>
-          <span class="line"><span><span class="italic">Quais.</span></span></span>
-        </h1>
-        <p class="tagline">
-          A decade spent shipping marketplaces, payments, and the occasional AI side project.
-        </p>
+        <div class="work-role">Senior Product Manager</div>
+        <div class="work-co">Fynd · Jio Commerce Platform</div>
+        <ul class="work-bullets">
+          <li>Led Metro/RCPL onboarding across OMS, Payments, and Extensions.</li>
+          <li>Drove HoReCa pilot to 10,000+ orders; saved $43K through operational improvements.</li>
+          <li>Architected GST refund hold/release flow across OMS and Extension layers.</li>
+          <li>Managing platform migration from v1.9.4 to v1.10.5.</li>
+        </ul>
       </div>
-
-      <aside class="hero-side">
-        <h2>Currently</h2>
-        <dl class="meta">
-          <dt>Role</dt>
-          <dd>Sr. PM, marketplace platform <em>at scale</em></dd>
-          <dt>Building</dt>
-          <dd>WorkTracker, MenuLens, an AI literacy series</dd>
-          <dt>Reading</dt>
-          <dd><em>Anything on AI product craft</em></dd>
-        </dl>
-      </aside>
+      <div class="work-period">May 2025 — Present</div>
     </div>
-
-    <div class="hero-nav-hint">
-      <a href="#about">About me</a>
-      <a href="#certs">Certifications</a>
-      <a href="#projects">Projects</a>
-      <a href="#resume">Resume</a>
-      <a href="#contact">Say hello</a>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="section-label">About me</div>
-    <h2 class="section-title">A PM who <span class="italic">ships.</span></h2>
-    <div class="about-grid">
-      <div class="about-body">
-        <p>
-          I'm a <strong>Senior Product Manager</strong> with 10+ years of experience across e-commerce, marketplace, SaaS, and retail-tech. I build scalable platform products with a focus on payments, OMS, and marketplace infrastructure.
-        </p>
-        <p>
-          My work spans the full stack of product — from defining OMS architecture and payment flows to running HoReCa pilots with 10,000+ orders and driving $43K in cost savings through operational improvements.
-        </p>
-        <p>
-          Outside of the day job, I build AI-powered tools like <strong>WorkTracker</strong> and <strong>MenuLens</strong>, write an AI literacy series for non-technical audiences, and run a digital creative studio.
-        </p>
-        <p>
-          I'm actively exploring <strong>new Senior PM opportunities</strong> at consumer-scale platforms where I can drive measurable product impact.
-        </p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-box">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Years of product experience</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">$43K</div>
-          <div class="stat-label">Operational cost savings</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">10K+</div>
-          <div class="stat-label">Orders in HoReCa pilot</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-number">3</div>
-          <div class="stat-label">AI tools shipped as side projects</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS & EDUCATION -->
-  <section id="certs" class="section">
-    <div class="section-label">Credentials</div>
-    <h2 class="section-title">Certs &amp; <span class="italic">Education.</span></h2>
-    <div class="certs-edu-grid">
+    <div class="work-item">
       <div>
-        <div class="col-label">Certifications</div>
-        <div class="cert-pill">
-          <span class="cert-name">Certified Scrum Product Owner</span>
-          <span class="cert-meta"><span class="cert-issuer">Scrum Alliance</span> · CSPO</span>
-        </div>
-        <div class="cert-pill">
-          <span class="cert-name">Claude Code 101</span>
-          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> · May 2026</span>
-        </div>
-        <div class="cert-pill">
-          <span class="cert-name">Introduction to Agent Skills</span>
-          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> · May 2026</span>
-        </div>
-        <div class="cert-pill">
-          <span class="cert-name">Introduction to Model Context Protocol</span>
-          <span class="cert-meta"><span class="cert-issuer">Anthropic Academy</span> · May 2026</span>
-        </div>
+        <div class="work-role">Product Manager</div>
+        <div class="work-co">Intellect Design Arena</div>
+        <ul class="work-bullets">
+          <li>Worked on core banking and fintech product modules.</li>
+          <li>Coordinated across engineering and client delivery teams.</li>
+        </ul>
       </div>
+      <div class="work-period">Mar 2024 — Apr 2025</div>
+    </div>
+    <div class="work-item">
       <div>
-        <div class="col-label">Education</div>
-        <div class="edu-item">
-          <div class="edu-degree">B.Tech, Information Technology</div>
-          <div class="edu-school">Rajasthan Technical University</div>
-          <div class="edu-year">2010 — 2014</div>
-        </div>
+        <div class="work-role">Assistant Product Manager</div>
+        <div class="work-co">Wasoko · B2B Africa</div>
+        <ul class="work-bullets">
+          <li>Built B2B marketplace features for informal retail across Africa.</li>
+          <li>Owned order and inventory management product surfaces.</li>
+        </ul>
       </div>
+      <div class="work-period">Oct 2022 — Jan 2024</div>
     </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <div class="section-label">Side projects</div>
-    <h2 class="section-title">Things I've <span class="italic">built.</span></h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <span class="project-tag">AI · Productivity</span>
-        <div class="project-name">WorkTracker</div>
-        <p class="project-desc">
-          A Jira and Slack dashboard with Claude API-powered daily briefings. Surfaces blockers, PRs, and sprint health in one view. Deployed and in daily use.
-        </p>
-        <div class="project-footer">
-          <span class="project-tech">React · Claude API · Vercel</span>
-          <a href="https://worktracker-ten.vercel.app" target="_blank" rel="noopener" class="project-link">Live ↗</a>
-        </div>
-      </div>
-      <div class="project-card">
-        <span class="project-tag">AI · Food-tech</span>
-        <div class="project-name">MenuLens</div>
-        <p class="project-desc">
-          AI-powered restaurant menu analyzer. Chrome Extension + React web app using Claude vision API for OCR and dish enrichment, with Unsplash reference images.
-        </p>
-        <div class="project-footer">
-          <span class="project-tech">Claude Vision · React · Chrome Extension</span>
-          <a href="https://github.com/uquais" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-        </div>
-      </div>
-      <div class="project-card">
-        <span class="project-tag">Content · AI Literacy</span>
-        <div class="project-name">AI Literacy Series</div>
-        <p class="project-desc">
-          A LinkedIn and Medium content series teaching non-technical audiences how to use AI tools effectively. Philosophy: "Teach them how to drive, not how the engine was built."
-        </p>
-        <div class="project-footer">
-          <span class="project-tech">LinkedIn · Medium</span>
-          <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener" class="project-link">Read ↗</a>
-        </div>
-      </div>
-      <div class="project-card">
-        <span class="project-tag">Creative · Digital</span>
-        <div class="project-name">House of Veils</div>
-        <p class="project-desc">
-          A modest fashion brand with a digital presence. Alongside it, a digital wedding invitations studio under Umair Group of Companies, serving clients across South Asia and the Middle East.
-        </p>
-        <div class="project-footer">
-          <span class="project-tech">Brand · E-commerce · Design</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESUME -->
-  <section id="resume" class="section">
-    <div class="section-label">Work history</div>
-    <h2 class="section-title">10 years of <span class="italic">shipping.</span></h2>
-    <div class="resume-layout">
+    <div class="work-item">
       <div>
-        <div class="resume-exp-item">
-          <div class="exp-header">
-            <div class="exp-role">Senior Product Manager</div>
-            <div class="exp-period">May 2025 — Present</div>
-          </div>
-          <div class="exp-company">Fynd · Jio Commerce Platform</div>
-          <ul class="exp-bullets">
-            <li>Led Metro/RCPL onboarding across OMS, Payments, and Extensions.</li>
-            <li>Drove HoReCa pilot to 10,000+ orders; saved $43K through operational improvements.</li>
-            <li>Architected GST refund hold flow across OMS and Extension layers.</li>
-            <li>Managing platform migration from v1.9.4 to v1.10.5.</li>
-          </ul>
-        </div>
-        <div class="resume-exp-item">
-          <div class="exp-header">
-            <div class="exp-role">Product Manager</div>
-            <div class="exp-period">Mar 2024 — Apr 2025</div>
-          </div>
-          <div class="exp-company">Intellect Design Arena</div>
-          <ul class="exp-bullets">
-            <li>Worked on core banking and fintech product modules.</li>
-            <li>Coordinated across engineering and client delivery teams.</li>
-          </ul>
-        </div>
-        <div class="resume-exp-item">
-          <div class="exp-header">
-            <div class="exp-role">Product Manager</div>
-            <div class="exp-period">Oct 2022 — Jan 2024</div>
-          </div>
-          <div class="exp-company">Wasoko</div>
-          <ul class="exp-bullets">
-            <li>Built B2B marketplace features for informal retail in Africa.</li>
-            <li>Owned order and inventory management product surfaces.</li>
-          </ul>
-        </div>
-        <div class="resume-exp-item">
-          <div class="exp-header">
-            <div class="exp-role">Product Manager</div>
-            <div class="exp-period">Sep 2021 — Oct 2022</div>
-          </div>
-          <div class="exp-company">Maximl Labs</div>
-          <ul class="exp-bullets">
-            <li>Led frontline worker productivity SaaS for industrial clients.</li>
-          </ul>
-        </div>
-        <div class="resume-exp-item">
-          <div class="exp-header">
-            <div class="exp-role">Senior Product Manager</div>
-            <div class="exp-period">Dec 2018 — Sep 2021</div>
-          </div>
-          <div class="exp-company">Paytm</div>
-          <ul class="exp-bullets">
-            <li>Managed payments and checkout product at scale.</li>
-            <li>Shipped features used by millions of consumers and merchants.</li>
-          </ul>
-        </div>
+        <div class="work-role">Product Analyst</div>
+        <div class="work-co">Maximl Labs</div>
+        <ul class="work-bullets">
+          <li>Led frontline worker productivity SaaS for industrial clients.</li>
+        </ul>
       </div>
-
+      <div class="work-period">Sep 2021 — Oct 2022</div>
+    </div>
+    <div class="work-item">
       <div>
-        <div class="resume-sidebar-block">
-          <div class="sidebar-block-label">Tools &amp; Platforms</div>
-          <span class="skill-tag">Jira</span>
-          <span class="skill-tag">Confluence</span>
-          <span class="skill-tag">Mixpanel</span>
-          <span class="skill-tag">Salesforce</span>
-          <span class="skill-tag">Google Analytics</span>
-          <span class="skill-tag">Tableau</span>
-          <span class="skill-tag">Figma</span>
-          <span class="skill-tag">Claude API</span>
-        </div>
-        <div class="resume-sidebar-block">
-          <div class="sidebar-block-label">Domains</div>
-          <span class="skill-tag">E-commerce</span>
-          <span class="skill-tag">Marketplace</span>
-          <span class="skill-tag">Payments</span>
-          <span class="skill-tag">OMS</span>
-          <span class="skill-tag">B2B SaaS</span>
-          <span class="skill-tag">AI Products</span>
-          <span class="skill-tag">Retail-tech</span>
-        </div>
-        <div class="resume-sidebar-block">
-          <div class="sidebar-block-label">Download CV</div>
-          <a href="mailto:uquais@gmail.com?subject=Resume Request" class="resume-cta">Request Resume →</a>
-        </div>
+        <div class="work-role">Assistant Product Manager</div>
+        <div class="work-co">Paytm</div>
+        <ul class="work-bullets">
+          <li>Managed payments and checkout product at scale.</li>
+          <li>Shipped features used by millions of consumers and merchants.</li>
+        </ul>
       </div>
+      <div class="work-period">Dec 2018 — Sep 2021</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="section-label">Get in touch</div>
-    <h2 class="section-title">Let's <span class="italic">talk.</span></h2>
-    <div class="contact-grid">
-      <div>
-        <p class="contact-intro">
-          Open to new product challenges. Happy to chat about AI products, marketplaces, or anything you're building.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:uquais@gmail.com" class="contact-link-item">
-            <span class="contact-link-label">Email</span>
-            <span class="contact-link-value">uquais@gmail.com</span>
-          </a>
-          <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener" class="contact-link-item">
-            <span class="contact-link-label">LinkedIn</span>
-            <span class="contact-link-value">linkedin.com/in/uquais</span>
-          </a>
-          <a href="https://github.com/uquais" target="_blank" rel="noopener" class="contact-link-item">
-            <span class="contact-link-label">GitHub</span>
-            <span class="contact-link-value">github.com/uquais</span>
-          </a>
-          <a href="https://medium.com/" target="_blank" rel="noopener" class="contact-link-item">
-            <span class="contact-link-label">Medium</span>
-            <span class="contact-link-value">AI literacy series</span>
-          </a>
-        </div>
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="section-eyebrow">Side projects</div>
+  <h2 class="section-h">Things I've <span class="acc">built.</span></h2>
+  <div class="proj-grid">
+    <a href="https://worktracker-ten.vercel.app" target="_blank" rel="noopener" class="proj-card">
+      <span class="proj-tag">AI · Productivity</span>
+      <div class="proj-name">WorkTracker</div>
+      <p class="proj-desc">Jira and Slack dashboard with Claude API-powered daily briefings. Surfaces blockers, PRs, and sprint health in one view. Deployed and in daily use.</p>
+      <div class="proj-footer">
+        <span class="proj-tech">React · Claude API · Vercel</span>
+        <span class="proj-link">Live ↗</span>
       </div>
-      <div class="contact-form-block">
-        <div class="form-row">
-          <div class="form-field">
-            <label for="c-name">Name</label>
-            <input type="text" id="c-name" placeholder="Your name" />
-          </div>
-          <div class="form-field">
-            <label for="c-email">Email</label>
-            <input type="email" id="c-email" placeholder="your@email.com" />
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="c-subject">Subject</label>
-          <input type="text" id="c-subject" placeholder="What's this about?" />
-        </div>
-        <div class="form-field">
-          <label for="c-msg">Message</label>
-          <textarea id="c-msg" rows="5" placeholder="Tell me what you're working on..."></textarea>
-        </div>
-        <button class="form-submit" onclick="handleContact()">Send message →</button>
+    </a>
+    <a href="https://github.com/uquais" target="_blank" rel="noopener" class="proj-card">
+      <span class="proj-tag">AI · Food-tech</span>
+      <div class="proj-name">MenuLens</div>
+      <p class="proj-desc">AI-powered restaurant menu analyzer. Chrome Extension and React web app using Claude Vision for OCR and dish enrichment.</p>
+      <div class="proj-footer">
+        <span class="proj-tech">Claude Vision · React · Chrome</span>
+        <span class="proj-link">GitHub ↗</span>
       </div>
-    </div>
-  </section>
+    </a>
+    <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener" class="proj-card">
+      <span class="proj-tag">Content · AI Literacy</span>
+      <div class="proj-name">AI Literacy Series</div>
+      <p class="proj-desc">LinkedIn and Medium series teaching non-technical audiences how to use AI tools. Philosophy: teach them to drive, not build the engine.</p>
+      <div class="proj-footer">
+        <span class="proj-tech">LinkedIn · Medium</span>
+        <span class="proj-link">Read ↗</span>
+      </div>
+    </a>
+    <a href="https://uquais.online" target="_blank" rel="noopener" class="proj-card">
+      <span class="proj-tag">Portfolio · Design</span>
+      <div class="proj-name">This Portfolio</div>
+      <p class="proj-desc">AI chat-first portfolio built from scratch. Visitors ask questions and get structured responses drawn from my resume and experience. Dark/light theme, scrollable chat, and a full work history below the fold.</p>
+      <div class="proj-footer">
+        <span class="proj-tech">HTML · CSS · JS · Claude API</span>
+        <span class="proj-link">Live ↗</span>
+      </div>
+    </a>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <span>© 2026 Umair Quais</span>
-    <div class="footer-links">
-      <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/uquais" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://medium.com/" target="_blank" rel="noopener">Medium</a>
-      <a href="mailto:uquais@gmail.com">Email</a>
+<!-- CERTS & EDUCATION -->
+<section id="certs" class="section">
+  <div class="section-eyebrow">Credentials</div>
+  <h2 class="section-h">Certs &amp; <span class="acc">Education.</span></h2>
+  <div class="certs-grid">
+    <div>
+      <div class="cert-col-label">Certifications</div>
+      <div class="cert-item">
+        <div class="cert-name">Certified Scrum Product Owner</div>
+        <div class="cert-meta"><span class="issuer">Scrum Alliance</span> · CSPO</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Claude Code 101</div>
+        <div class="cert-meta"><span class="issuer">Anthropic Academy</span> · May 2026</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Introduction to Agent Skills</div>
+        <div class="cert-meta"><span class="issuer">Anthropic Academy</span> · May 2026</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Introduction to Model Context Protocol</div>
+        <div class="cert-meta"><span class="issuer">Anthropic Academy</span> · May 2026</div>
+      </div>
     </div>
-  </footer>
+    <div>
+      <div class="cert-col-label">Education</div>
+      <div class="edu-item">
+        <div class="edu-degree">B.Tech, Information Technology</div>
+        <div class="edu-school">Suresh Gyan Vihar University</div>
+        <div class="edu-year">2010 — 2014</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-eyebrow">Get in touch</div>
+  <h2 class="section-h">Let's <span class="acc">talk.</span></h2>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">Open to new Senior PM opportunities at consumer-scale platforms across India. Happy to chat about AI products, marketplaces, or anything you're building.</p>
+      <div class="contact-links">
+        <a href="mailto:uquais@gmail.com" class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-val">uquais@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-val">linkedin.com/in/uquais</span>
+        </a>
+        <a href="https://github.com/uquais" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-val">github.com/uquais</span>
+        </a>
+        <a href="https://uquais.online" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-label">Portfolio</span>
+          <span class="contact-val">uquais.online</span>
+        </a>
+      </div>
+    </div>
+    <div style="padding-top:4px;">
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:20px;">Mobile</div>
+      <div style="font-size:15px;color:var(--ink2);margin-bottom:28px;">+91 88907 29005</div>
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px;">Location</div>
+      <div style="font-size:15px;color:var(--ink2);">Mumbai, India · open to relocate</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Umair Quais</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/uquais/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/uquais" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:uquais@gmail.com">Email</a>
+    <a href="https://uquais.online">uquais.online</a>
+  </div>
+</footer>
 
 <script>
-  const clock = document.getElementById("clock");
-  function tick() {
-    const now = new Date();
-    const opts = { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", hour12: false };
-    const t = now.toLocaleTimeString("en-GB", opts);
-    clock.textContent = `${t} IST`;
-  }
-  tick();
-  setInterval(tick, 30000);
+const RESPONSES = {
+  "What kind of PM are you?": () => ({
+    text: "I'm a platform and AI-native PM — I work at the intersection of engineering complexity, business outcomes, and increasingly, AI systems. My core is e-commerce, payments, and marketplace infrastructure, built over 10+ years across startups and scaled platforms.",
+    cards: [
+      { tag: "Product skills", title: "Platform & AI-native PM", meta: "Discovery · PRD Writing · Experimentation · Roadmapping", body: `<ul><li>End-to-end ownership: discovery, scoping, PRD writing, user stories, metrics definition</li><li>Comfortable in ambiguity — translate open-ended business problems into shippable specs</li><li>Strong cross-functional delivery: engineering, QA, infra, ops, merchant stakeholders</li><li>Data-driven: funnel metrics, Mixpanel, Google Analytics, Tableau, experimentation</li></ul>` },
+      { tag: "AI skills", title: "Hands-on with AI products", meta: "Agentic Workflows · MCP · Claude API · Prompt Engineering", body: `<ul><li>Agentic workflows and MCP integration — shipped a reusable skill into production at Fynd</li><li>Claude API, AI use case scoping, prompt engineering, skill creation and deployment</li><li>Claude Code, AI product scoping, skill testing and validation</li><li>Built and shipped WorkTracker and MenuLens as personal AI projects</li></ul>` },
+    ],
+    stats: [{ num: "10+", label: "Years shipped" }, { num: "45+", label: "Microservices (GoFynd AI)" }, { num: "3", label: "AI tools built" }]
+  }),
+  "Show me your recent work": () => ({
+    text: "Here's my work history — from current role back:",
+    cards: [
+      { tag: "Current · May 2025 — Present", title: "Senior PM · Fynd", meta: "Jio Commerce Platform · Reliance Retail · Mumbai", body: `<ul><li>Own AI-powered product initiatives on JCP including GoFynd Platform AI — an agentic workflow system across 45+ microservices</li><li>Drive payments product for Gringotts infrastructure processing high-volume merchant transactions</li><li>Designed GST refund product: two-step hold/release with MID eligibility gating</li><li>Led platform migration achieving $43K in cost savings with zero live disruption</li></ul>` },
+      { tag: "Oct 2022 — Jan 2024", title: "APM · Wasoko", meta: "B2B Commerce · African Markets · Remote", body: `<ul><li>Led product for B2B commerce platform serving FMCG merchants across Africa</li><li>Owned order, payments, and fulfilment workflows end to end</li><li>Improved merchant order fulfilment rate by 18% across multiple geographies</li></ul>` },
+      { tag: "Dec 2018 — Sep 2021", title: "APM · Paytm", meta: "Payments · UPI · Cards · Net Banking · Noida", body: `<ul><li>Merchant-facing payments product on a platform processing millions of daily transactions</li><li>Scoped bank response normalisation across multiple banking integrations</li><li>Improved merchant transaction success rates through smarter automation workflows</li></ul>` },
+      { tag: "Mar 2024 — Apr 2025", title: "PM · Intellect Design Arena", meta: "Procurement · Marketplace · Mumbai", body: `<ul><li>Owned Seller and Buyer Marketplace for the Procurement product</li><li>Hands-on with Bid/Procurement and Merchant Communication modules</li><li>Translated open-ended business problems into clear product requirements and user stories</li></ul>` },
+    ]
+  }),
+  "What AI tools have you built?": () => ({
+    text: "I've shipped three AI projects — all end-to-end, from use case identification to production deployment:",
+    cards: [
+      { tag: "2026 · Agentic AI · Internal", title: "GoFynd Platform AI", meta: "Agentic Workflows · MCP · 45+ Microservices · Fynd", body: `Contributed to an internal agentic AI workflow layer at Fynd spanning 45+ microservices. Identified the use case, designed, deployed, and tested a reusable skill enabling intelligent automation across platform operations.` },
+      { tag: "2025 · AI · Productivity", title: "WorkTracker", meta: "React · Claude API · Jira MCP · Slack MCP · Vercel", body: `AI-powered dashboard integrating Claude API with Jira and Slack via MCP. Enables real-time workflow intelligence across engineering and product teams. <a href='https://worktracker-ten.vercel.app' target='_blank' rel='noopener' class='resp-link'>Live ↗</a>` },
+      { tag: "2025 · Vision AI · Chrome Extension", title: "MenuLens", meta: "Vision AI · Chrome Extension · React", body: `Chrome Extension using vision AI for contextual restaurant menu analysis. Built end-to-end from use case identification to production deployment. <a href='https://github.com/uquais' target='_blank' rel='noopener' class='resp-link'>GitHub ↗</a>` },
+    ]
+  }),
+  "What are you looking for next?": () => ({
+    text: "I'm actively exploring Senior PM roles in India. Open to relocating anywhere — what matters is the right product, team, and problem to solve.",
+    cards: [
+      { tag: "Open to", title: "Senior PM · India", meta: "Mumbai · Bangalore · Delhi · Hyderabad · Anywhere · Open to relocate", body: `<ul><li>Consumer-scale platforms — e-commerce, fintech, marketplace, AI-native products</li><li>Products where AI is a core part of the roadmap, not an afterthought</li><li>Teams that value platform thinking, engineering partnership, and data-driven decisions</li><li>Comfortable in ambiguity and high-ownership environments</li></ul>` },
+    ],
+    stats: [{ num: "India", label: "Focused market" }, { num: "30 days", label: "Notice period" }, { num: "Any city", label: "Open to relocate" }]
+  }),
+  "What are your skills and tools?": () => ({
+    text: "Here's my full skills stack from the resume:",
+    cards: [
+      { tag: "Product", title: "Core PM skills", meta: "", body: `<ul><li>Discovery, Prioritisation, PRD Writing, User Stories</li><li>Experimentation, Metrics Definition, Roadmapping</li><li>Agile/Scrum, Backlog Management, Cross-functional Delivery</li><li>Jira, Confluence, Azure DevOps</li></ul>` },
+      { tag: "AI", title: "AI & agentic", meta: "", body: `<ul><li>Agentic Workflows, MCP, Claude API</li><li>AI Use Case Scoping, Prompt Engineering</li><li>Skill Creation, Deployment, Testing and Validation</li><li>Claude Code, AI Product Scoping</li></ul>` },
+      { tag: "Analytics & DevOps", title: "Data & execution", meta: "", body: `<ul><li>Mixpanel, Google Analytics, Tableau, Metrics Dashboards</li><li>Jenkins CI/CD, Build and Deployment Pipelines</li><li>Pull Requests, Merge Conflict Resolution, Changelog Management</li></ul>` },
+    ]
+  }),
+  "Notice period and availability?": () => ({
+    text: "Short notice — I can move fast if the role is the right fit.",
+    cards: [
+      { tag: "Availability", title: "30-day notice period", meta: "Currently at Fynd · Mumbai", body: `<ul><li>Notice period: 30 days from date of acceptance</li><li>Open to relocating anywhere in India — Bangalore, Delhi, Hyderabad, Pune, Chennai, anywhere</li><li>Available immediately for interviews, assessments, and calls</li></ul>` },
+    ],
+    stats: [{ num: "30", label: "Days notice" }, { num: "Any", label: "City in India" }, { num: "Now", label: "Available to talk" }]
+  }),
+  "How can I contact you?": () => ({
+    text: "Best ways to reach me:",
+    cards: [
+      { tag: "Contact", title: "Let's talk", meta: "", body: `<ul><li><strong style='color:var(--ink)'>Email:</strong> uquais@gmail.com</li><li><strong style='color:var(--ink)'>LinkedIn:</strong> linkedin.com/in/uquais</li><li><strong style='color:var(--ink)'>Phone:</strong> +91 88907 29005</li><li><strong style='color:var(--ink)'>Portfolio:</strong> uquais.online</li></ul>` },
+    ]
+  })
+};
 
-  function handleContact() {
-    const name = document.getElementById("c-name").value.trim();
-    const email = document.getElementById("c-email").value.trim();
-    const subject = document.getElementById("c-subject").value.trim();
-    const msg = document.getElementById("c-msg").value.trim();
-    if (!name || !email || !msg) { alert("Please fill in name, email, and message."); return; }
-    const mailto = `mailto:uquais@gmail.com?subject=${encodeURIComponent(subject || "Portfolio inquiry")}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${msg}`)}`;
-    window.location.href = mailto;
+const DEFAULT_RESPONSE = {
+  text: "Great question — happy to elaborate. Feel free to email me directly or explore the sections below.",
+  cards: [
+    { tag: "Quick links", title: "Explore further", meta: "", body: `<ul><li>Scroll down to see my full work history</li><li>Check the Projects section for live AI tools I've built</li><li>Or reach me at uquais@gmail.com</li></ul>` }
+  ]
+};
+
+let isTyping = false;
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeIcon').textContent = isDark ? '☽' : '☀';
+  document.getElementById('themeLabel').textContent = isDark ? 'dark' : 'light';
+}
+
+function autoResize(el) {
+  el.style.height = "auto";
+  el.style.height = Math.min(el.scrollHeight, 140) + "px";
+}
+
+function handleKey(e) {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function sendChip(btn, text) {
+  btn.disabled = true;
+  btn.style.opacity = ".4";
+  addUserMessage(text);
+  const match = RESPONSES[text];
+  showTyping(() => {
+    removeTyping();
+    const resp = match ? match() : DEFAULT_RESPONSE;
+    addBotMessage(resp);
+  });
+}
+
+function sendMessage() {
+  const inp = document.getElementById("chatInput");
+  const text = inp.value.trim();
+  if (!text || isTyping) return;
+  inp.value = "";
+  inp.style.height = "auto";
+  addUserMessage(text);
+  const lower = text.toLowerCase();
+  let key = null;
+  if (lower.match(/notice|availab|when can|start date|join/)) key = "Notice period and availability?";
+  else if (lower.match(/skill|tool|stack|mixpanel|jira|analytics|devops|agile|scrum|confluence/)) key = "What are your skills and tools?";
+  else if (lower.match(/ai|tools|built|worktracker|menulens|gofynd|agentic|mcp|claude/)) key = "What AI tools have you built?";
+  else if (lower.match(/look|next|want|open|relocat|location|city|where|hiring|opportunit/)) key = "What are you looking for next?";
+  else if (lower.match(/work|experience|fynd|paytm|wasoko|recent|histor|intellect|maximl|naukri/)) key = "Show me your recent work";
+  else if (lower.match(/contact|email|reach|phone|linkedin/)) key = "How can I contact you?";
+  else if (lower.match(/pm|product|manager|kind|type|strength|background|who/)) key = "What kind of PM are you?";
+  showTyping(() => {
+    removeTyping();
+    const resp = key ? RESPONSES[key]() : DEFAULT_RESPONSE;
+    addBotMessage(resp);
+  });
+}
+
+function addUserMessage(text) {
+  const msgs = document.getElementById("chatMessages");
+  const div = document.createElement("div");
+  div.className = "msg user";
+  div.innerHTML = `<div class="msg-avatar usr">you</div><div class="msg-bubble">${escHtml(text)}</div>`;
+  msgs.appendChild(div);
+  scrollBottom();
+}
+
+function showTyping(cb) {
+  isTyping = true;
+  const msgs = document.getElementById("chatMessages");
+  const div = document.createElement("div");
+  div.className = "msg bot";
+  div.id = "typingMsg";
+  div.innerHTML = `<div class="msg-avatar bot">UQ</div><div class="msg-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;
+  msgs.appendChild(div);
+  scrollBottom();
+  setTimeout(cb, 900 + Math.random() * 400);
+}
+
+function removeTyping() {
+  const t = document.getElementById("typingMsg");
+  if (t) t.remove();
+  isTyping = false;
+}
+
+function addBotMessage(resp) {
+  const msgs = document.getElementById("chatMessages");
+  const div = document.createElement("div");
+  div.className = "msg bot";
+  let html = `<div class="msg-avatar bot">UQ</div><div class="msg-bubble">${escHtml(resp.text)}`;
+  if (resp.cards) {
+    resp.cards.forEach(c => {
+      html += `<div class="resp-card"><div class="resp-card-tag">${c.tag}</div><div class="resp-card-title">${c.title}</div>${c.meta ? `<div class="resp-card-meta">${c.meta}</div>` : ''}<div class="resp-card-body">${c.body}</div></div>`;
+    });
   }
+  if (resp.stats) {
+    html += `<div class="resp-stat-row">`;
+    resp.stats.forEach(s => {
+      html += `<div class="resp-stat"><div class="resp-stat-num">${s.num}</div><div class="resp-stat-label">${s.label}</div></div>`;
+    });
+    html += `</div>`;
+  }
+  html += `</div>`;
+  div.innerHTML = html;
+  msgs.appendChild(div);
+  scrollBottom();
+}
+
+function scrollBottom() {
+  const msgs = document.getElementById("chatMessages");
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
 </script>
 </body>
 </html>
