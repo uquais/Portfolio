@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root {
   --bg:       #FFFFFF;
@@ -1144,7 +1145,9 @@ function scrollBottom() {
 
 function escHtml(s) {
   return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-}async function requestResume() {
+}
+
+async function requestResume() {
   const btn = document.getElementById('resumeBtn');
   const label = document.getElementById('resumeBtnLabel');
   btn.disabled = true;
@@ -1159,35 +1162,31 @@ function escHtml(s) {
   const ua = navigator.userAgent;
   const platform = navigator.platform || 'unknown';
   const referrer = document.referrer || 'Direct / unknown';
-  const online = navigator.onLine ? 'Yes' : 'No';
-  const cookiesEnabled = navigator.cookieEnabled ? 'Yes' : 'No';
   const touchSupport = ('ontouchstart' in window) ? 'Yes (mobile/tablet)' : 'No (desktop)';
   const deviceMemory = navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'unknown';
   const cores = navigator.hardwareConcurrency || 'unknown';
-  const connection = navigator.connection ? `${navigator.connection.effectiveType || ''} ${navigator.connection.downlink ? navigator.connection.downlink+'Mbps' : ''}`.trim() : 'unknown';
+  const connection = navigator.connection ? `${navigator.connection.effectiveType || ''} ${navigator.connection.downlink ? navigator.connection.downlink + 'Mbps' : ''}`.trim() : 'unknown';
 
-  let ip = 'unavailable', city = 'unknown', region = 'unknown', country = 'unknown', isp = 'unknown', lat = '', lon = '', org = '';
+  let ip = 'unavailable', city = 'unknown', region = 'unknown', country = 'unknown', org = '', lat = '', lon = '';
   try {
     const geo = await fetch('https://ipapi.co/json/');
     const g = await geo.json();
-    ip      = g.ip        || ip;
-    city    = g.city      || city;
-    region  = g.region    || region;
+    ip      = g.ip           || ip;
+    city    = g.city         || city;
+    region  = g.region       || region;
     country = g.country_name || country;
-    isp     = g.org       || isp;
-    lat     = g.latitude  || '';
-    lon     = g.longitude || '';
-    org     = g.org       || '';
+    org     = g.org          || 'unknown';
+    lat     = g.latitude     || '';
+    lon     = g.longitude    || '';
   } catch(e) {}
 
   const mapLink = lat && lon ? `https://maps.google.com/?q=${lat},${lon}` : 'unavailable';
-
   const subject = `[Resume Request] ${city}, ${country} — ${now.toLocaleDateString('en-IN')}`;
 
-  const body = `
-Hi Umair,
+  const notifyBody =
+`Hi Umair,
 
-Someone just requested your resume from uquais.online. Here's everything collected:
+Someone just requested your resume from uquais.online.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 LOCATION & NETWORK
@@ -1197,7 +1196,7 @@ City         : ${city}
 Region       : ${region}
 Country      : ${country}
 ISP / Org    : ${org}
-Map link     : ${mapLink}
+Map          : ${mapLink}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 TIME & LOCALE
@@ -1216,8 +1215,6 @@ Touch device : ${touchSupport}
 RAM          : ${deviceMemory}
 CPU cores    : ${cores}
 Connection   : ${connection}
-Cookies      : ${cookiesEnabled}
-Online       : ${online}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SOURCE
@@ -1226,15 +1223,29 @@ Referrer     : ${referrer}
 User Agent   : ${ua}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+— uquais.online`;
 
-Reply to this email to send your resume.
+  /* ── Silent notification to Umair via EmailJS ── */
+  const EMAILJS_SERVICE  = service_jvo39si;
+  const EMAILJS_TEMPLATE = template_75of0ic;
+  const EMAILJS_KEY      = d_jkWQJnnujWXKz43;
 
-— uquais.online
-`.trim();
+  try {
+    await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      to_email : 'uquais@gmail.com',
+      subject  : subject,
+      message  : notifyBody,
+    }, EMAILJS_KEY);
+  } catch(e) {
+    console.warn('EmailJS notification failed:', e);
+  }
 
-  const mailto = `mailto:uquais@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  /* ── Open requestor's email client ── */
+  const requestorBody = `Hi Umair,\n\nI came across your portfolio and would love to receive your resume.\n\nThanks!`;
+  const mailto = `mailto:uquais@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(requestorBody)}`;
   window.location.href = mailto;
 
+  label.textContent = 'Sent!';
   setTimeout(() => {
     btn.disabled = false;
     label.textContent = 'Request Resume';
