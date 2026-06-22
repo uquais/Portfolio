@@ -890,20 +890,49 @@ footer a:hover { color: var(--accent); }
   <h2 class="section-h">Want my <span class="acc">resume?</span></h2>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;">
     <div>
-      <p style="font-size:15px;line-height:1.75;color:var(--ink2);max-width:48ch;margin-bottom:28px;">
-        I'll send my latest resume within 24 hours. Just hit the button — it opens your email with everything pre-filled. One click and you're done.
+      <p style="font-size:15px;line-height:1.75;color:var(--ink2);max-width:48ch;margin-bottom:24px;">
+        Drop your email and I'll send my latest resume within 24 hours.
       </p>
-      <button
-        id="resumeBtn"
-        onclick="requestResume()"
-        style="display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:14px 28px;border:none;border-radius:4px;cursor:pointer;transition:opacity .2s;"
-        onmouseover="this.style.opacity='.85'"
-        onmouseout="this.style.opacity='1'"
-      >
-        <span id="resumeBtnLabel">Request Resume</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
+
+      <!-- Step 1: email input -->
+      <div id="resumeStep1" style="display:flex;flex-direction:column;gap:10px;max-width:380px;">
+        <div style="display:flex;gap:8px;">
+          <input
+            type="email"
+            id="requestorEmail"
+            placeholder="your@email.com"
+            onkeydown="if(event.key==='Enter') submitResumeRequest()"
+            style="flex:1;background:var(--bg2);border:1px solid var(--line2);border-radius:4px;padding:12px 14px;font-family:var(--sans);font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;"
+            onfocus="this.style.borderColor='var(--accent)'"
+            onblur="this.style.borderColor='var(--line2)'"
+          />
+          <button
+            id="resumeBtn"
+            onclick="submitResumeRequest()"
+            style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;border:none;border-radius:4px;cursor:pointer;white-space:nowrap;transition:opacity .2s;"
+            onmouseover="this.style.opacity='.85'"
+            onmouseout="this.style.opacity='1'"
+          >
+            <span id="resumeBtnLabel">Send</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <p id="resumeError" style="font-family:var(--mono);font-size:11px;color:#cc3300;display:none;letter-spacing:.04em;"></p>
+      </div>
+
+      <!-- Step 2: success state -->
+      <div id="resumeStep2" style="display:none;">
+        <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);border-radius:4px;max-width:380px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div>
+            <div style="font-size:14px;font-weight:500;color:var(--ink);margin-bottom:2px;">Request received!</div>
+            <div id="resumeConfirmEmail" style="font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.04em;"></div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--ink3);margin-top:12px;">Check your inbox — a confirmation is on its way. I'll reply with the resume within 24 hours.</p>
+      </div>
     </div>
+
     <div style="display:flex;flex-direction:column;gap:2px;">
       <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);">
         <span style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);">Format</span>
@@ -1147,25 +1176,33 @@ function escHtml(s) {
   return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
-async function requestResume() {
+async function submitResumeRequest() {
+  const emailInput = document.getElementById('requestorEmail');
   const btn = document.getElementById('resumeBtn');
   const label = document.getElementById('resumeBtnLabel');
+  const errEl = document.getElementById('resumeError');
+  const requestorEmail = emailInput.value.trim();
+
+  errEl.style.display = 'none';
+  if (!requestorEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(requestorEmail)) {
+    errEl.textContent = 'Please enter a valid email address.';
+    errEl.style.display = 'block';
+    emailInput.focus();
+    return;
+  }
+
   btn.disabled = true;
-  label.textContent = 'Gathering info...';
+  label.textContent = 'Sending...';
 
   const now = new Date();
   const localTime = now.toLocaleString('en-IN', { dateStyle: 'full', timeStyle: 'long' });
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const lang = navigator.language || 'unknown';
   const screen = `${window.screen.width}x${window.screen.height}`;
-  const viewport = `${window.innerWidth}x${window.innerHeight}`;
   const ua = navigator.userAgent;
-  const platform = navigator.platform || 'unknown';
   const referrer = document.referrer || 'Direct / unknown';
-  const touchSupport = ('ontouchstart' in window) ? 'Yes (mobile/tablet)' : 'No (desktop)';
-  const deviceMemory = navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'unknown';
+  const touchSupport = ('ontouchstart' in window) ? 'Mobile/Tablet' : 'Desktop';
   const cores = navigator.hardwareConcurrency || 'unknown';
-  const connection = navigator.connection ? `${navigator.connection.effectiveType || ''} ${navigator.connection.downlink ? navigator.connection.downlink + 'Mbps' : ''}`.trim() : 'unknown';
 
   let ip = 'unavailable', city = 'unknown', region = 'unknown', country = 'unknown', org = '', lat = '', lon = '';
   try {
@@ -1181,12 +1218,16 @@ async function requestResume() {
   } catch(e) {}
 
   const mapLink = lat && lon ? `https://maps.google.com/?q=${lat},${lon}` : 'unavailable';
-  const subject = `[Resume Request] ${city}, ${country} — ${now.toLocaleDateString('en-IN')}`;
 
   const notifyBody =
 `Hi Umair,
 
-Someone just requested your resume from uquais.online.
+Someone requested your resume. Send it to: ${requestorEmail}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REQUESTOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Email        : ${requestorEmail}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 LOCATION & NETWORK
@@ -1199,57 +1240,55 @@ ISP / Org    : ${org}
 Map          : ${mapLink}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TIME & LOCALE
+TIME & DEVICE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Timestamp    : ${localTime}
 Timezone     : ${tz}
 Language     : ${lang}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-DEVICE & BROWSER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Platform     : ${platform}
+Device       : ${touchSupport}
 Screen       : ${screen}
-Viewport     : ${viewport}
-Touch device : ${touchSupport}
-RAM          : ${deviceMemory}
 CPU cores    : ${cores}
-Connection   : ${connection}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SOURCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Referrer     : ${referrer}
 User Agent   : ${ua}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 — uquais.online`;
 
-  /* ── Silent notification to Umair via EmailJS ── */
-  const EMAILJS_SERVICE  = service_jvo39si;
-  const EMAILJS_TEMPLATE = template_75of0ic;
-  const EMAILJS_KEY      = d_jkWQJnnujWXKz43;
+  const EMAILJS_SERVICE  = 'service_jvo39si';
+  const EMAILJS_TEMPLATE = 'template_75of0ic';
+  const EMAILJS_KEY      = 'd_jkWQJnnujWXKz43';
 
   try {
-    await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
-      to_email : 'uquais@gmail.com',
-      subject  : subject,
-      message  : notifyBody,
-    }, EMAILJS_KEY);
+    /* Notification to Umair */
+    await Promise.race([
+      emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+        to_email : 'uquais@gmail.com',
+        subject  : `[Resume Request] ${requestorEmail} — ${city}, ${country}`,
+        message  : notifyBody,
+        reply_to : requestorEmail,
+      }, EMAILJS_KEY),
+      new Promise((_, reject) => setTimeout(() => reject('timeout'), 5000))
+    ]);
+
+    /* Acknowledgement to requestor */
+    await Promise.race([
+      emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+        to_email : requestorEmail,
+        subject  : 'Umair has received your Resume Request',
+        message  : `Hi,\n\nThank you for reaching out. I have received your request and will do my best to share the resume within the next 24 hours.\n\nBest regards,\nUmair Quais\nuquais.online`,
+        reply_to : 'uquais@gmail.com',
+      }, EMAILJS_KEY),
+      new Promise((_, reject) => setTimeout(() => reject('timeout'), 5000))
+    ]);
+
   } catch(e) {
-    console.warn('EmailJS notification failed:', e);
+    console.warn('EmailJS error:', e);
   }
 
-  /* ── Open requestor's email client ── */
-  const requestorBody = `Hi Umair,\n\nI came across your portfolio and would love to receive your resume.\n\nThanks!`;
-  const mailto = `mailto:uquais@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(requestorBody)}`;
-  window.location.href = mailto;
-
-  label.textContent = 'Sent!';
-  setTimeout(() => {
-    btn.disabled = false;
-    label.textContent = 'Request Resume';
-  }, 3000);
+  /* Show success state */
+  document.getElementById('resumeStep1').style.display = 'none';
+  document.getElementById('resumeConfirmEmail').textContent = `Confirmation sent to ${requestorEmail}`;
+  document.getElementById('resumeStep2').style.display = 'block';
 }
 </script>
 </body>
