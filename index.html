@@ -1254,14 +1254,15 @@ User Agent   : ${ua}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 — uquais.online`;
 
-  const EMAILJS_SERVICE  = 'service_jvo39si';
-  const EMAILJS_TEMPLATE = 'template_75of0ic';
-  const EMAILJS_KEY      = 'd_jkWQJnnujWXKz43';
+  const EMAILJS_SERVICE      = 'service_jvo39si';
+  const EMAILJS_NOTIFY_TPL   = 'template_75of0ic';  // notification to Umair
+  const EMAILJS_ACK_TPL      = 'template_9085vci';  // acknowledgement to requestor
+  const EMAILJS_KEY          = 'd_jkWQJnnujWXKz43';
 
   try {
     /* Notification to Umair */
     await Promise.race([
-      emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      emailjs.send(EMAILJS_SERVICE, EMAILJS_NOTIFY_TPL, {
         to_email : 'uquais@gmail.com',
         subject  : `[Resume Request] ${requestorEmail} — ${city}, ${country}`,
         message  : notifyBody,
@@ -1272,7 +1273,7 @@ User Agent   : ${ua}
 
     /* Acknowledgement to requestor */
     await Promise.race([
-      emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      emailjs.send(EMAILJS_SERVICE, EMAILJS_ACK_TPL, {
         to_email : requestorEmail,
         subject  : 'Umair has received your Resume Request',
         message  : `Hi,\n\nThank you for reaching out. I have received your request and will do my best to share the resume within the next 24 hours.\n\nBest regards,\nUmair Quais\nuquais.online`,
